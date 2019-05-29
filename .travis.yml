@@ -3,6 +3,9 @@ services:
   - docker
 
 before_install:
+  # If you get the following error on Travis CI:
+  #    The command "docker build -t [secure]/react-test -f ./client/Dockerfile.dev ./client" failed and exited with 1 during .
+  # then try removing the git folder from the client folder and try again.
   - docker build -t spagettys/react-test -f ./client/Dockerfile.dev ./client
 
 script:
