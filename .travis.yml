@@ -1,12 +1,13 @@
 sudo: required
+language: generic
 services:
   - docker
 
 before_install:
-  #- docker build -t spagettys/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t spagettys/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  #- docker run -e CI=true spagettys/react-test npm run test -- --coverage --watchAll=false
+  - docker run -e CI=true spagettys/react-test npm run test -- --coverage --watchAll=false
 
 after_success:
   - docker build -t spagettys/multi-client ./client
