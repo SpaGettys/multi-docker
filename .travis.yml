@@ -14,7 +14,7 @@ after_success:
   - docker build -t spagettys/multi-nginx ./nginx
   - docker build -t spagettys/multi-server ./server
   - docker build -t spagettys/multi-worker ./worker
-  # Log  in to the the docker CLI
+  # Log in to the the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take these images and push them to docker hub
   - docker push spagettys/multi-client
