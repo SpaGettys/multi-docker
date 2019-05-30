@@ -21,3 +21,16 @@ after_success:
   - docker push spagettys/multi-nginx
   - docker push spagettys/multi-server
   - docker push spagettys/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'ap-northeast-1'
+  app: 'docker-multi'
+  env: 'MultiDocker-env'
+  bucket_name: 'elasticbeanstalk-ap-northeast-1-371441811134'
+  bucket_path: 'docker-multi'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: '$AWS_SECRET_KEY'
